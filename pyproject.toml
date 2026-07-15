@@ -1,20 +1,43 @@
+[build-system]
+build-backend = "uv_build"
+requires = ["uv_build>=0.11.26,<0.12.0"]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.15.21",
+]
+
 [project]
-name = "json-lines-to-markdown"
-version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
 authors = [
     { name = "seokbong131", email = "243122144+seokbong131@users.noreply.github.com" }
 ]
-requires-python = ">=3.14"
 dependencies = [
     "jsonlines>=4.0.0",
     "pydantic>=2.13.4",
 ]
+description = "Add your description here"
+name = "json-lines-to-markdown"
+readme = "README.md"
+requires-python = ">=3.14"
+version = "0.1.0"
 
 [project.scripts]
 json-lines-to-markdown = "json_lines_to_markdown:main"
 
-[build-system]
-requires = ["uv_build>=0.11.26,<0.12.0"]
-build-backend = "uv_build"
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = [
+    "B",    # bugbear
+    "E",    # pycodestyle errors
+    "F",    # pyflakes
+    "I",    # isort
+    "N",    # pep8-naming
+    "SIM",  # simplify
+    "UP",   # pyupgrade
+    "W",    # pycodestyle warnings
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["json_lines_to_markdown"]
